@@ -1,8 +1,15 @@
 import React from 'react'
+import EntryCard from './EntryCard'
 
-function EntryList() {
+function EntryList({ entries }) {
   return (
-    <div>EntryList</div>
+    <div>
+      <h2>Entries</h2>
+      <p>No entries yet</p>
+      {entries.map((entry) => (
+        <EntryCard /* key={entry.date} */ entry={entry}/>
+      ))}
+    </div>
   )
 }
 

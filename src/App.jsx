@@ -1,15 +1,15 @@
+import { useState } from 'react'
 import EntryForm from './components/EntryForm'
-import DiaryList from './components/EntryList'
+import EntryList from './components/EntryList';
 
 function App() {
-
+const [entries, setEntries] = useState([]);
 
   return (
     <div>
       <EntryForm />
       <div>hello</div>
-      <DiaryList />
-      
+      <EntryList entries={entries}/>
     </div>
   )
 }

@@ -1,8 +1,12 @@
 import React from 'react'
 
-function EntryCard() {
+function EntryCard({ entry }) {
   return (
-    <div>EntryCard</div>
+    <div>
+      <img src={entry.image} alt={entry.title} />
+      <h3>{entry.title}</h3>
+      <p>{entry.date}</p>
+    </div>
   )
 }
 
