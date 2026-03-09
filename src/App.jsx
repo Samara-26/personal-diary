@@ -1,15 +1,25 @@
+import { useEffect, useState } from 'react'
 import EntryForm from './components/EntryForm'
-import DiaryList from './components/EntryList'
+import EntryList from './components/EntryList';
 
 function App() {
-
-
+  const [entries, setEntries] = useState([]);
+  //Read and render stored entries when the app first mounts
+  useEffect(() => {
+    const stored = localStorage.getItem("entries");
+    const arr = stored ? JSON.parse(stored) : [];
+    setEntries(arr);
+  }, []);
+  //Store diary entries as an array in localStorage
+  useEffect(() => {
+    localStorage.setItem("entries", JSON.stringify(entries));
+  }, [entries]);
   return (
-    <div>
-      <EntryForm />
-      <div>hello</div>
-      <DiaryList />
-      
+    <div className='min-h-screen bg-slate-100 py-10'>
+      <div className='mx-auto max-w-6xl px-4'>
+        <EntryForm setEntries={setEntries} />
+        <EntryList entries={entries} />
+      </div>
     </div>
   )
 }
