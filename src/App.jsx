@@ -3,13 +3,12 @@ import EntryForm from './components/EntryForm'
 import EntryList from './components/EntryList';
 
 function App() {
-  const [entries, setEntries] = useState([]);
   //Read and render stored entries when the app first mounts
-  useEffect(() => {
+  const [entries, setEntries] = useState(() => {
     const stored = localStorage.getItem("entries");
-    const arr = stored ? JSON.parse(stored) : [];
-    setEntries(arr);
-  }, []);
+    return stored ? JSON.parse(stored) : [];
+  });
+
   //Store diary entries as an array in localStorage
   useEffect(() => {
     localStorage.setItem("entries", JSON.stringify(entries));
